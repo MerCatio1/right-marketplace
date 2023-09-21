@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+</head>
+<body>
+
+<h2>Are you a Morning Person or a Night Owl?</h2>
+
+<form id="quiz">
+    <div>
+        <p>1. When do you feel most energetic?</p>
+        <label><input type="radio" name="q1" value="morning"> Early in the morning</label><br>
+        <label><input type="radio" name="q1" value="night"> Late at night</label>
+    </div>
+
+    <div>
+        <p>2. When do you prefer to exercise?</p>
+        <label><input type="radio" name="q2" value="morning"> Morning</label><br>
+        <label><input type="radio" name="q2" value="night"> Evening</label>
+    </div>
+
+    <div>
+        <p>3. When do you get most of your work done?</p>
+        <label><input type="radio" name="q3" value="morning"> Morning</label><br>
+        <label><input type="radio" name="q3" value="night"> Night</label>
+    </div>
+
+    <button type="button" onclick="calculateResult()">Submit</button>
+</form>
+
+<h3 id="result"></h3>
+
+<script>
+function calculateResult() {
+    const answers = document.querySelectorAll('input[type="radio"]:checked');
+    let morningCount = 0;
+    let nightCount = 0;
+
+    answers.forEach(answer => {
+        if (answer.value === 'morning') morningCount++;
+        if (answer.value === 'night') nightCount++;
+    });
+
+    if (morningCount > nightCount) {
+        document.getElementById('result').textContent = "You're a Morning Person!";
+    } else if (nightCount > morningCount) {
+        document.getElementById('result').textContent = "You're a Night Owl!";
+    } else {
+        document.getElementById('result').textContent = "You're a mix of both!";
+    }
+}
+</script>
+
+</body>
+</html>
